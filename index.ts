@@ -4,9 +4,13 @@ export interface HasConstructor {
   constructor: { name: string }
 }
 
-export interface CaseResult{
+export interface CaseResult {
   Type: TypeConstructor,
   Func: (arg: InstanceType<TypeConstructor>) => any
+}
+
+export interface DefaultResult {
+  Func: () => any
 }
 
 export type CaseFunc = <T extends TypeConstructor>(type: T) => (func: (arg: InstanceType<T>) => any) => CaseResult
@@ -19,14 +23,23 @@ export const Case:CaseFunc = <TOut>(type: TypeConstructor) => (func: (arg: Insta
   return caseResult;
 }
 
-export const TypeSwitch = (arg: HasConstructor) => (...funcs: CaseResult[]) => {
-  const func = funcs.find(t => t.Type.name === arg.constructor.name);
-  if(!func || !func.Func) {
-    throw Error('you must provide a case')
+export type DefaultFunc = (func: () => any) => DefaultResult
+
+const Default: DefaultFunc = (func: () => any): DefaultResult => {
+  const result: DefaultResult = {
+    Func: func,
   }
-  
-  if (func.Func) {
-      return func.Func(arg);      
-  }
-  return; // will come up with a default
+  return result;
 }
+
+export const TypeSwitchWithDefault = (arg: any) => (...funcs: CaseResult[]) => (def?: DefaultResult) => {
+
+    const func = funcs.find(t => t.Type.name === arg.constructor.name) || def;
+    if (!func) {
+        throw Error('you must provide a case or default value');
+    }
+    
+    return func.Func(arg);      
+}
+
+export const TypeSwitch = (arg: any) => (...funcs: CaseResult[]) => TypeSwitchWithDefault(arg)(...funcs)();
