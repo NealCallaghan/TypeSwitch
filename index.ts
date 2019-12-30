@@ -25,7 +25,7 @@ export const Case:CaseFunc = <TOut>(type: TypeConstructor) => (func: (arg: Insta
 
 export type DefaultFunc = (func: () => any) => DefaultResult
 
-const Default: DefaultFunc = (func: () => any): DefaultResult => {
+export const Default: DefaultFunc = (func: () => any): DefaultResult => {
   const result: DefaultResult = {
     Func: func,
   }
