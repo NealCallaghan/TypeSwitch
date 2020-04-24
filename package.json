@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc -p ."
   },
   "repository": {
@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/neal83/TypeSwitch#readme",
   "devDependencies": {
+    "@types/jest": "^25.2.1",
     "@types/node": "^13.7.0",
+    "jest": "^25.4.0",
+    "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   }
 }
