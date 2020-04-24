@@ -1,0 +1,26 @@
+{
+  "name": "TypeSwitch",
+  "version": "1.0.0",
+  "description": "Provides a TypeSwitch function in Typescript allowing you to switch on the type of the argument past into the function providing a sudo simple pattern matching function.",
+  "main": "index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neal83/TypeSwitch.git"
+  },
+  "keywords": [],
+  "author": "Neal Callaghan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neal83/TypeSwitch/issues"
+  },
+  "homepage": "https://github.com/neal83/TypeSwitch#readme",
+  "devDependencies": {
+    "@types/node": "^13.7.0",
+    "typescript": "^3.8.3"
+  }
+}
