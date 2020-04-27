@@ -13,7 +13,13 @@
     "type": "git",
     "url": "git+https://github.com/neal83/TypeSwitch.git"
   },
-  "keywords": [],
+  "keywords": [
+    "TypeSwitch",
+    "Pattern",
+    "Matching",
+    "PatternMatching",
+    "Class Conditional"
+  ],
   "author": "Neal Callaghan",
   "license": "ISC",
   "bugs": {
